@@ -4,6 +4,10 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
+    @filterrific = initialize_filterrific(
+      Listing,
+      params[:filterrific]
+    ) or return
     @listings = Listing.all
   end
 

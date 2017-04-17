@@ -2,10 +2,37 @@
 
 <h1>Listing Listings</h1>
 
+<%= form_for_filterrific @filterrific do |f| %>
+  <div>
+    Category
+    <%= f.select(:category, @filterrific.select_options[:category], { include_blank: '- Any -' }) %>
+  </div>
+  <div>
+    Title
+    <%= f.text_field(:title) %>
+  </div>
+  <div>
+    Location
+    <%= f.text_field(:location) %>
+  </div>
+  <div>
+    Rooms
+    <%= f.select(:room_nums, @filterrific.select_options[:room_nums], { include_blank: '- Any -' }) %>
+  </div>
+  <div>
+    Bathrooms
+    <%= f.select(:bathroom_nums, @filterrific.select_options[:bathroom_nums], { include_blank: '- Any -' }) %>
+  </div>
+  <div>
+    Sorted by
+    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+  </div>
+<% end %>
+
 <table>
   <thead>
     <tr>
-      <th>Type</th>
+      <th>Category</th>
       <th>Title</th>
       <th>Location</th>
       <th>Room nums</th>
@@ -17,7 +44,7 @@
   <tbody>
     <% @listings.each do |listing| %>
       <tr>
-        <td><%= listing.type %></td>
+        <td><%= listing.category %></td>
         <td><%= listing.title %></td>
         <td><%= listing.location %></td>
         <td><%= listing.room_nums %></td>
